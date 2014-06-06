@@ -9,7 +9,8 @@ by [Eddy Verbruggen](http://twitter.com/eddyverbruggen)
 	3. [Automatically (CLI / Plugman)](#automatically-cli--plugman)
 	3. [Manually](#manually)
 4. [Usage](#4-usage)
-5. [License](#7-license)
+5. [Quircks](#5-quircks)
+6. [License](#6-license)
 
 ## 1. Description
 
@@ -85,7 +86,18 @@ You can copy-paste these lines of code for a quick test:
 <button onclick="window.plugins.touchid.verifyFingerprint('Scan your fingerprint please', function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + JSON.stringify(msg))})">Scan fingerprint</button>
 ```
 
-## 5. License
+## 5. Quircks
+
+### XCode compilation failure
+When testing the plugin in XCode, use a real device (not the simulator) to avoid compilation errors.
+I think this will be fixed in an upcoming XCode 6 beta version.
+
+### iOS8 beta Phonegap apps broken
+Also, iOS8 Phonegap apps are a bit broken at the moment because of an undefined navigator.userAgent.
+You will likely run into this issue when testing this plugin as well.
+[Here's a fix!](https://gist.github.com/EddyVerbruggen/cd02c73162180793513e#file-ios8-beta-phonegap-fix)
+
+## 6. License
 
 [The MIT License (MIT)](http://www.opensource.org/licenses/mit-license.html)
 
