@@ -1,7 +1,9 @@
-#import <Cordova/CDV.h>
+#import <Cordova/CDVPlugin.h>
 
-@interface HealthKit :CDVPlugin
+@interface TouchID :CDVPlugin
 
-- (void) testMethod:(CDVInvokedUrlCommand*)command;
+- (void) isAvailable:(CDVInvokedUrlCommand*)command;
+
+- (void) verifyFingerprint:(CDVInvokedUrlCommand*)command;
 
 @end

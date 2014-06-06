@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="nl.x-services.plugins.touchid"
-        version="0.0.1">
+        version="1.0.0">
 
   <name>Touch ID</name>
 
   <description>
-    Interact with the new iOS8 Touch ID SDK
+    Scan the fingerprint of your user with the TouchID sensor (iPhone 5S)
   </description>
 
   <license>MIT</license>
@@ -27,6 +27,8 @@
         <param name="ios-package" value="TouchID"/>
       </feature>
     </config-file>
+
+    <framework src="LocalAuthentication.framework" />
 
     <header-file src="src/ios/TouchID.h"/>
     <source-file src="src/ios/TouchID.m"/>

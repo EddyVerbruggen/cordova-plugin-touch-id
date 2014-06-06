@@ -1,8 +1,12 @@
 function TouchID() {
 }
 
-TouchID.prototype.testMethod = function (successCallback, errorCallback) {
-  cordova.exec(successCallback, errorCallback, "TouchID", "testMethod", []);
+TouchID.prototype.isAvailable = function (successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "TouchID", "isAvailable", []);
+};
+
+TouchID.prototype.verifyFingerprint = function (message, successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "TouchID", "verifyFingerprint", [message]);
 };
 
 TouchID.install = function () {
