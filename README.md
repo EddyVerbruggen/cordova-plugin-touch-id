@@ -21,6 +21,7 @@ Scan the fingerprint of your user with the TouchID sensor (iPhone 5S).
 * Requires a fingerprint scanner, so iPhone 5S only
 
 ## 2. Screenshot
+Distorted a bit because Apple is not a fan of developers posting screenshots of unreleased features.
 
 ![ScreenShot](TouchID-demo.png)
 
