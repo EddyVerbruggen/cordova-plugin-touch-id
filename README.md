@@ -94,9 +94,8 @@ When testing the plugin in XCode, use a real device (not the simulator) to avoid
 I think this will be fixed in an upcoming XCode 6 beta version.
 
 ### iOS8 beta Phonegap apps broken
-Also, iOS8 Phonegap apps are a bit broken at the moment because of an undefined navigator.userAgent.
-You will likely run into this issue when testing this plugin as well.
-[Here's a fix!](https://gist.github.com/EddyVerbruggen/cd02c73162180793513e#file-ios8-beta-phonegap-fix)
+Also, before beta 2, iOS8 Phonegap apps were a bit broken because of an undefined navigator.userAgent.
+If you are still on beta 1 when testing this plugin, then [Here's a fix!](https://gist.github.com/EddyVerbruggen/cd02c73162180793513e#file-ios8-beta-phonegap-fix)
 
 ## 6. License
 
