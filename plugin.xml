@@ -6,7 +6,7 @@
   <name>Touch ID</name>
 
   <description>
-    Scan the fingerprint of your user with the TouchID sensor (iPhone 5S)
+    Scan the fingerprint of your user with the TouchID sensor (iPhone 5S, iPhone 6, ..)
   </description>
 
   <license>MIT</license>
