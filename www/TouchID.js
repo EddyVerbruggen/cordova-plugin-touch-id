@@ -1,26 +1,25 @@
-cordova.define("nl.x-services.plugins.touchid.TouchID", function(require, exports, module) { function TouchID() {
+function TouchID() {
 }
 
-  TouchID.prototype.isAvailable = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "TouchID", "isAvailable", []);
-  };
+TouchID.prototype.isAvailable = function (successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "TouchID", "isAvailable", []);
+};
 
-  TouchID.prototype.verifyFingerprint = function (message, successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "TouchID", "verifyFingerprint", [message]);
-  };
+TouchID.prototype.verifyFingerprint = function (message, successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "TouchID", "verifyFingerprint", [message]);
+};
 
-  TouchID.prototype.verifyFingerprintWithCustomPasswordFallback = function (message, successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "TouchID", "verifyFingerprintWithCustomPasswordFallback", [message]);
-  };
+TouchID.prototype.verifyFingerprintWithCustomPasswordFallback = function (message, successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "TouchID", "verifyFingerprintWithCustomPasswordFallback", [message]);
+};
 
-  TouchID.install = function () {
-    if (!window.plugins) {
-      window.plugins = {};
-    }
+TouchID.install = function () {
+  if (!window.plugins) {
+    window.plugins = {};
+  }
 
-    window.plugins.touchid = new TouchID();
-    return window.plugins.touchid;
-  };
+  window.plugins.touchid = new TouchID();
+  return window.plugins.touchid;
+};
 
-  cordova.addConstructor(TouchID.install);
-});
+cordova.addConstructor(TouchID.install);
