@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="nl.x-services.plugins.touchid"
-        version="1.0.0">
+        version="2.0.0">
 
   <name>Touch ID</name>
 
   <description>
     Scan the fingerprint of your user with the TouchID sensor (iPhone 5S, iPhone 6, ..)
   </description>
+
+  <author>Eddy Verbruggen</author>
+
+  <license>MIT</license>
+
+  <keywords>TouchID, Touch ID, Fingerprint, Biometric</keywords>
+
+  <repo>https://github.com/EddyVerbruggen/cordova-plugin-touchid.git</repo>
+
+  <issue>https://github.com/EddyVerbruggen/cordova-plugin-touchid/issues</issue>
 
   <license>MIT</license>
 
@@ -29,6 +39,7 @@
     </config-file>
 
     <framework src="LocalAuthentication.framework" />
+    <framework src="Security.framework" />
 
     <header-file src="src/ios/TouchID.h"/>
     <source-file src="src/ios/TouchID.m"/>

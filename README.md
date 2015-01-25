@@ -17,11 +17,11 @@ by [Eddy Verbruggen](http://twitter.com/eddyverbruggen)
 Scan the fingerprint of your user with the TouchID sensor (iPhone 5S).
 
 * Compatible with [Cordova Plugman](https://github.com/apache/cordova-plugman).
-* Minimum iOS version is 8 (error callbacks will be gracefully invoked on lower versions)
-* Requires a fingerprint scanner, so iPhone 5S only
+* Minimum iOS version is 8 (error callbacks will be gracefully invoked on lower versions).
+* Requires a fingerprint scanner, so an iPhone 5S or newer is required.
 
 ## 2. Screenshot
-Distorted a bit because Apple is not a fan of developers posting screenshots of unreleased features.
+Distorted a bit because I created it back when Apple had not yet released the SDK and they're not a fan of developers posting screenshots of unreleased features.
 
 ![ScreenShot](TouchID-demo.png)
 
@@ -31,11 +31,7 @@ Distorted a bit because Apple is not a fan of developers posting screenshots of 
 Compatible with [Cordova Plugman](https://github.com/apache/cordova-plugman), compatible with [PhoneGap 3.0 CLI](http://docs.phonegap.com/en/3.0.0/guide_cli_index.md.html#The%20Command-line%20Interface_add_features), here's how it works with the CLI (backup your project first!):
 
 ```
-$ phonegap local plugin add https://github.com/EddyVerbruggen/cordova-touchid-plugin.git
-```
-or
-```
-$ cordova plugin add https://github.com/EddyVerbruggen/cordova-touchid-plugin
+$ cordova plugin add nl.x-services.plugins.touchid
 $ cordova prepare
 ```
 
@@ -50,8 +46,8 @@ TouchID.js is brought in automatically. There is no need to change or add anythi
 </feature>
 ```
 
-You'll need to add the `LocalAuthentication.framework` to your project.
-Click your project, Build Phases, Link Binary With Libraries, search for and add `LocalAuthentication.framework`.
+You'll need to add the `LocalAuthentication.framework` and `Security.framework` to your project.
+Click your project, Build Phases, Link Binary With Libraries, search for and add the frameworks.
 
 2\. Grab a copy of TouchID.js, add it to your project and reference it in `index.html`:
 ```html
@@ -72,9 +68,21 @@ window.plugins.touchid.isAvailable(
 );
 ```
 
-If the onSuccess handler was called, you can scan the fingerprint:
+If the onSuccess handler was called, you can scan the fingerprint.
+There are two options: `verifyFingerprint` and `verifyFingerprintWithCustomPasswordFallback`.
+The first method will offer a fallback option called 'enter passcode' which shows the default passcode UI when pressed.
+The second method will offer a fallback option called 'enter password' (not passcode) which allows you to provide your own password dialog.
 ```js
 window.plugins.touchid.verifyFingerprint(
+  'Scan your fingerprint please', // this will be shown in the native scanner popup
+   function(msg) {alert('ok: ' + msg)}, // success handler: fingerprint accepted
+   function(msg) {alert('not ok: ' + JSON.stringify(msg))} // error handler with errorcode and localised reason
+);
+```
+The errorhandler of the method above can receive an error code of `-2` which means the user pressed the 'enter password' fallback.
+
+```js
+window.plugins.touchid.verifyFingerprintWithCustomPasswordFallback(
   'Scan your fingerprint please', // this will be shown in the native scanner popup
    function(msg) {alert('ok: ' + msg)}, // success handler: fingerprint accepted
    function(msg) {alert('not ok: ' + JSON.stringify(msg))} // error handler with errorcode and localised reason
@@ -89,13 +97,8 @@ You can copy-paste these lines of code for a quick test:
 
 ## 5. Quircks
 
-### XCode compilation failure
-When testing the plugin in XCode, use a real device (not the simulator) to avoid compilation errors.
-I think this will be fixed in an upcoming XCode 6 beta version.
-
-### iOS8 beta Phonegap apps broken
-Also, before beta 2, iOS8 Phonegap apps were a bit broken because of an undefined navigator.userAgent.
-If you are still on beta 1 when testing this plugin, then [Here's a fix!](https://gist.github.com/EddyVerbruggen/cd02c73162180793513e#file-ios8-beta-phonegap-fix)
+### The iOS Simulator
+When testing the plugin in XCode, use a real device (not the simulator) because it has no fingerprint scanner. Duh.
 
 ## 6. License
 

@@ -6,4 +6,6 @@
 
 - (void) verifyFingerprint:(CDVInvokedUrlCommand*)command;
 
+- (void) verifyFingerprintWithCustomPasswordFallback:(CDVInvokedUrlCommand*)command;
+
 @end
