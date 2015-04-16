@@ -19,8 +19,6 @@
 
   <issue>https://github.com/EddyVerbruggen/cordova-plugin-touchid/issues</issue>
 
-  <license>MIT</license>
-
   <engines>
     <engine name="cordova" version=">=3.0.0"/>
   </engines>
@@ -38,6 +36,7 @@
       </feature>
     </config-file>
 
+    <framework src="src/ios/lib/ResearchKit.framework" custom="true" />
     <framework src="LocalAuthentication.framework" />
     <framework src="Security.framework" />
 
