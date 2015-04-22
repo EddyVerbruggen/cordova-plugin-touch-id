@@ -36,7 +36,6 @@
       </feature>
     </config-file>
 
-    <framework src="src/ios/lib/ResearchKit.framework" custom="true" />
     <framework src="LocalAuthentication.framework" />
     <framework src="Security.framework" />
 
