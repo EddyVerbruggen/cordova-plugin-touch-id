@@ -9,11 +9,6 @@ NSString *keychainItemServiceName;
 
 - (void) isAvailable:(CDVInvokedUrlCommand*)command; {
 
-  if (TARGET_IPHONE_SIMULATOR) {
-    [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"The simulator is not supported"] callbackId:command.callbackId];
-    return;
-  }
-
   if (NSClassFromString(@"LAContext") == NULL) {
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR] callbackId:command.callbackId];
     return;

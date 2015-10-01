@@ -9,8 +9,7 @@ by [Eddy Verbruggen](http://twitter.com/eddyverbruggen)
 	3. [Automatically (CLI / Plugman)](#automatically-cli--plugman)
 	3. [Manually](#manually)
 4. [Usage](#4-usage)
-5. [Quircks](#5-quircks)
-6. [License](#6-license)
+5. [License](#5-license)
 
 ## 1. Description
 
@@ -95,12 +94,7 @@ You can copy-paste these lines of code for a quick test:
 <button onclick="window.plugins.touchid.verifyFingerprint('Scan your fingerprint please', function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + JSON.stringify(msg))})">Scan fingerprint</button>
 ```
 
-## 5. Quircks
-
-### The iOS Simulator
-When testing the plugin in XCode, use a real device (not the simulator) because it has no fingerprint scanner. Duh.
-
-## 6. License
+## 5. License
 
 [The MIT License (MIT)](http://www.opensource.org/licenses/mit-license.html)
 
