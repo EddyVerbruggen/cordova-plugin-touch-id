@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="nl.x-services.plugins.touchid"
-        version="2.0.1">
+        id="cordova-plugin-touch-id"
+        version="3.0.0">
 
   <name>Touch ID</name>
 
   <description>
-    Scan the fingerprint of your user with the TouchID sensor (iPhone 5S, iPhone 6, ..)
+    Scan the fingerprint of your user with the TouchID sensor (iPhone 5S, iPhone 6(S), ..)
   </description>
 
   <author>Eddy Verbruggen</author>
