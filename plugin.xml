@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="cordova-plugin-touch-id"
-        version="3.0.0">
+        version="3.1.0">
 
   <name>Touch ID</name>
 

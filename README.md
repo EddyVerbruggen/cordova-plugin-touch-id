@@ -22,7 +22,7 @@ Scan the fingerprint of your user with the TouchID sensor (iPhone 5S).
 ## 2. Screenshot
 Distorted a bit because I created it back when Apple had not yet released the SDK and they're not a fan of developers posting screenshots of unreleased features.
 
-![ScreenShot](TouchID-demo.png)
+![ScreenShot](screenshots/TouchID-demo.PNG)
 
 ## 3. Installation
 
@@ -90,6 +90,18 @@ The errorhandler of the method above can receive an error code of `-2` which mea
 ```js
 window.plugins.touchid.verifyFingerprintWithCustomPasswordFallback(
   'Scan your fingerprint please', // this will be shown in the native scanner popup
+   function(msg) {alert('ok: ' + msg)}, // success handler: fingerprint accepted
+   function(msg) {alert('not ok: ' + JSON.stringify(msg))} // error handler with errorcode and localised reason
+);
+```
+
+This will render a button labelled 'Enter password' in case the fingerprint is not recognized.
+If you want to provide your own label ('Enter PIN' perhaps), you can use awkwardly named function (added in version 3.1.0):
+
+```js
+window.plugins.touchid.verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel(
+  'Scan your fingerprint please', // this will be shown in the native scanner popup
+  'Enter PIN', // this will become the 'Enter password' button label
    function(msg) {alert('ok: ' + msg)}, // success handler: fingerprint accepted
    function(msg) {alert('not ok: ' + JSON.stringify(msg))} // error handler with errorcode and localised reason
 );

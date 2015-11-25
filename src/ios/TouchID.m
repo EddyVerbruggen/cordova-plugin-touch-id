@@ -83,9 +83,17 @@ NSString *keychainItemServiceName;
 
 // This implementation uses LocalAuthentication and has no built-in passcode fallback
 - (void) verifyFingerprintWithCustomPasswordFallback:(CDVInvokedUrlCommand*)command {
-  
   NSString *message = [command.arguments objectAtIndex:0];
-  NSString *callbackId = command.callbackId;
+  [self verifyFingerprintWithCustomPasswordFallback:command.callbackId withMessage:message andEnterPasswordLabel:nil];
+}
+
+- (void) verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel:(CDVInvokedUrlCommand*)command {
+  NSString *message = [command.arguments objectAtIndex:0];
+  NSString *enterPasswordLabel = [command.arguments objectAtIndex:1];
+  [self verifyFingerprintWithCustomPasswordFallback:command.callbackId withMessage:message andEnterPasswordLabel:enterPasswordLabel];
+}
+
+- (void) verifyFingerprintWithCustomPasswordFallback:(NSString*)callbackId withMessage:(NSString*)message andEnterPasswordLabel:(NSString*)enterPasswordLabel {
   
   if (NSClassFromString(@"LAContext") == NULL) {
     [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR]
@@ -102,11 +110,16 @@ NSString *keychainItemServiceName;
                                   callbackId:callbackId];
       return;
     }
-  
+
+    // this replaces the default 'Enter password' button label
+    if (enterPasswordLabel != nil) {
+      laContext.localizedFallbackTitle = enterPasswordLabel;
+    }
+
     [laContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:message reply:^(BOOL authOK, NSError *error) {
       if (authOK) {
         [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK]
-                                  callbackId:command.callbackId];
+                                    callbackId:callbackId];
       } else {
         // invoked when the scan failed 3 times in a row, the cancel button was pressed, or the 'enter password' button was pressed
         NSArray *errorKeys = @[@"code", @"localizedDescription"];
