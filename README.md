@@ -9,7 +9,8 @@ by [Eddy Verbruggen](http://twitter.com/eddyverbruggen)
 	3. [Automatically (CLI / Plugman)](#automatically-cli--plugman)
 	3. [Manually](#manually)
 4. [Usage](#4-usage)
-5. [License](#5-license)
+5. [Security++](#5-security++)
+6. [License](#5-license)
 
 ## 1. Description
 
@@ -113,7 +114,34 @@ You can copy-paste these lines of code for a quick test:
 <button onclick="window.plugins.touchid.verifyFingerprint('Scan your fingerprint please', function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + JSON.stringify(msg))})">Scan fingerprint</button>
 ```
 
-## 5. License
+## 5. Security++
+Since iOS9 it's possible to check whether or not the list of enrolled fingerprints changed since
+the last time you checked it. It's recommended you add this check so you can counter hacker attacks
+to your app. See [this article](https://godpraksis.no/2016/03/fingerprint-trojan/) for more details.
+
+So instead of checking the fingerprint after `isAvailable` add another check.
+In case `didFingerprintDatabaseChange` returns `true` you probably want to re-authenticate your user
+before accepting valid fingerprints again.
+
+```js
+window.plugins.touchid.isAvailable(
+  function(available) {
+    if (available) {
+      window.plugins.touchid.didFingerprintDatabaseChange(
+        function(changed) {
+          if (changed) {
+            // re-auth the user by asking for his credentials before allowing a fingerprint scan again
+          } else {
+            // call the fingerprint scanner
+          }
+        }
+      );
+    }
+  }
+);
+```
+
+## 6. License
 
 [The MIT License (MIT)](http://www.opensource.org/licenses/mit-license.html)
 
