@@ -9,7 +9,7 @@ by [Eddy Verbruggen](http://twitter.com/eddyverbruggen)
 	3. [Automatically (CLI / Plugman)](#automatically-cli--plugman)
 	3. [Manually](#manually)
 4. [Usage](#4-usage)
-5. [Security++](#5-security++)
+5. [Security++](#5-security)
 6. [License](#5-license)
 
 ## 1. Description
