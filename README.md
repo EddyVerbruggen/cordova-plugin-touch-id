@@ -70,8 +70,8 @@ First you'll want to check whether or not the user has a configured fingerprint 
 You can use this to show a 'log in with your fingerprint' button next to a username/password login form.
 ```js
 window.plugins.touchid.isAvailable(
-  function(msg) {alert('ok: ' + msg)},    // success handler: TouchID available
-  function(msg) {alert('not ok: ' + msg)} // error handler: no TouchID available
+  function() {alert('available!')}, // success handler: TouchID available
+  function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
 );
 ```
 
@@ -125,19 +125,22 @@ before accepting valid fingerprints again.
 
 ```js
 window.plugins.touchid.isAvailable(
-  function(available) {
-    if (available) {
+    // success handler; available
+    function() {
       window.plugins.touchid.didFingerprintDatabaseChange(
-        function(changed) {
-          if (changed) {
-            // re-auth the user by asking for his credentials before allowing a fingerprint scan again
-          } else {
-            // call the fingerprint scanner
+          function(changed) {
+            if (changed) {
+              // re-auth the user by asking for his credentials before allowing a fingerprint scan again
+            } else {
+              // call the fingerprint scanner
+            }
           }
-        }
       );
+    },
+    // error handler; not available
+    function(msg) {
+      // use a more traditional auth mechanism
     }
-  }
 );
 ```
 
