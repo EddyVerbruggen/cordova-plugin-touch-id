@@ -1,7 +1,7 @@
 # Cordova TouchID Plugin
 by [Eddy Verbruggen](http://twitter.com/eddyverbruggen)
 
-## 0. Index
+## Index
 
 1. [Description](#1-description)
 2. [Screenshot](#2-screenshot)
@@ -12,7 +12,7 @@ by [Eddy Verbruggen](http://twitter.com/eddyverbruggen)
 5. [Security++](#5-security)
 6. [License](#5-license)
 
-## 1. Description
+## Description
 
 Scan the fingerprint of your user with the TouchID sensor (iPhone 5S).
 
@@ -20,12 +20,12 @@ Scan the fingerprint of your user with the TouchID sensor (iPhone 5S).
 * Minimum iOS version is 8 (error callbacks will be gracefully invoked on lower versions).
 * Requires a fingerprint scanner, so an iPhone 5S or newer is required.
 
-## 2. Screenshot
+## Screenshot
 Distorted a bit because I created it back when Apple had not yet released the SDK and they're not a fan of developers posting screenshots of unreleased features.
 
 ![ScreenShot](screenshots/TouchID-demo.PNG)
 
-## 3. Installation
+## Installation
 
 ### Automatically (CLI / Plugman)
 Compatible with [Cordova Plugman](https://github.com/apache/cordova-plugman), compatible with [PhoneGap 3.0 CLI](http://docs.phonegap.com/en/3.0.0/guide_cli_index.md.html#The%20Command-line%20Interface_add_features), here's how it works with the CLI (backup your project first!):
@@ -65,7 +65,7 @@ Click your project, Build Phases, Link Binary With Libraries, search for and add
 
 iOS: Copy the two `.h` and two `.m` files to `platforms/ios/<ProjectName>/Plugins`
 
-## 4. Usage
+## Usage
 First you'll want to check whether or not the user has a configured fingerprint scanner.
 You can use this to show a 'log in with your fingerprint' button next to a username/password login form.
 ```js
@@ -114,7 +114,7 @@ You can copy-paste these lines of code for a quick test:
 <button onclick="window.plugins.touchid.verifyFingerprint('Scan your fingerprint please', function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + JSON.stringify(msg))})">Scan fingerprint</button>
 ```
 
-## 5. Security++
+## Security++
 Since iOS9 it's possible to check whether or not the list of enrolled fingerprints changed since
 the last time you checked it. It's recommended you add this check so you can counter hacker attacks
 to your app. See [this article](https://godpraksis.no/2016/03/fingerprint-trojan/) for more details.
