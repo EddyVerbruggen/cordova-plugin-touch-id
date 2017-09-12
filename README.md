@@ -1,5 +1,6 @@
 # Cordova TouchID Plugin
-by [Eddy Verbruggen](http://twitter.com/eddyverbruggen)
+
+> Also works with Face ID on iPhone X 🚀
 
 ## Index
 
