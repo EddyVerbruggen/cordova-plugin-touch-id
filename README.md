@@ -4,14 +4,14 @@
 
 ## Index
 
-1. [Description](#1-description)
-2. [Screenshot](#2-screenshot)
-3. [Installation](#3-installation)
+1. [Description](#description)
+2. [Screenshot](#screenshot)
+3. [Installation](#installation)
 	3. [Automatically (CLI / Plugman)](#automatically-cli--plugman)
 	3. [Manually](#manually)
-4. [Usage](#4-usage)
-5. [Security++](#5-security)
-6. [License](#5-license)
+4. [Usage](#usage)
+5. [Security++](#security)
+6. [License](#license)
 
 ## Description
 
@@ -144,3 +144,6 @@ window.plugins.touchid.isAvailable(
     }
 );
 ```
+
+## License
+MIT License (MIT)
