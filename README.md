@@ -7,11 +7,8 @@
 1. [Description](#description)
 2. [Screenshot](#screenshot)
 3. [Installation](#installation)
-	3. [Automatically (CLI / Plugman)](#automatically-cli--plugman)
-	3. [Manually](#manually)
 4. [Usage](#usage)
 5. [Security++](#security)
-6. [License](#license)
 
 ## Description
 
@@ -144,6 +141,3 @@ window.plugins.touchid.isAvailable(
     }
 );
 ```
-
-## License
-MIT License (MIT)
