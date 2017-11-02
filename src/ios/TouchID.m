@@ -20,8 +20,17 @@ NSString *keychainItemServiceName;
 
     NSError *error = nil;
     LAContext *laContext = [[LAContext alloc] init];
+    Boolean isFaceId = NO;
 
     if ([laContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+      if (laContext.biometryType == LABiometryTypeFaceID && @available(iOS 11.0, *)) {
+        isFaceId = YES;
+      } else {
+        isFaceId = NO;
+      }
+      [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:isFaceId]
+                                        callbackId:command.callbackId];
+
       [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK]
                                   callbackId:command.callbackId];
     } else {
