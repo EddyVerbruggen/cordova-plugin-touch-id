@@ -1,8 +1,8 @@
 function TouchID() {
 }
 
-TouchID.prototype.isAvailable = function (successCallback, errorCallback) {
-  cordova.exec(successCallback, errorCallback, "TouchID", "isAvailable", []);
+TouchID.prototype.isAvailable = function (checkBiometricType, successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "TouchID", "isAvailable", [!!checkBiometricType]);
 };
 
 TouchID.prototype.didFingerprintDatabaseChange = function (successCallback, errorCallback) {
