@@ -160,3 +160,10 @@ window.plugins.touchid.isAvailable(
   function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
 );
 ```
+
+If you want to alter the usage description in the consent popup, then override the
+default empty adds an empty `NSFaceIDUsageDescription`. To do so, pass the following variable when installing the plugin:
+
+```
+cordova plugin add cordova-plugin-touch-id --variable FACEID_USAGE_DESCRIPTION="For easy authentication"
+```
