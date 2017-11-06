@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-touch-id",
-  "version": "3.2.0",
-  "description": "Scan the fingerprint of your user with the TouchID sensor (iPhone 5S, iPhone 6(S), ..)",
+  "version": "3.3.0",
+  "description": "Scan the fingerprint of your user with the TouchID sensor, or the user's Face with Face ID on iPhone X",
   "cordova": {
     "id": "cordova-plugin-touch-id",
     "platforms": [
@@ -15,6 +15,8 @@
   "keywords": [
     "TouchID",
     "Touch ID",
+    "Face ID",
+    "iPhone X",
     "Fingerprint",
     "Biometric",
     "Scanner",

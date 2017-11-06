@@ -149,26 +149,14 @@ Since iOS 11, LocalAuthentication also supports Face ID for biometrics. This is
 a drop-in replacement for Touch ID and any existing apps using Touch ID will
 work identically on devices that use Face ID.
 
-In order to determine the biometry type, an optional argument has been added to
-the `isAvailable` method which will return the type as a string as `'face'` or
-`'touch'` when available. You can use this to display "Face ID" or "Touch ID"
-as appropriate in your app.
+Since plugin version 3.3.0 the success callback of `isAvailable` receives
+the type of biometric ID, which is either `touch` or `face`.
+
+You can use this to display "Face ID" or "Touch ID" as appropriate in your app.
 
 ```js
 window.plugins.touchid.isAvailable(
-  true,
   function(type) {alert(type)}, // type returned to success callback: 'face' on iPhone X, 'touch' on other devices
-  function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
-);
-
-window.plugins.touchid.isAvailable(
-  false,
-  function() {alert('available')}, // Nothing returned to success callback
-  function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
-);
-
-window.plugins.touchid.isAvailable(
-  function() {alert('available')}, // Nothing returned to success callback
   function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
 );
 ```
