@@ -68,6 +68,7 @@ First you'll want to check whether or not the user has a configured fingerprint 
 You can use this to show a 'log in with your fingerprint' button next to a username/password login form.
 ```js
 window.plugins.touchid.isAvailable(
+  false,
   function() {alert('available!')}, // success handler: TouchID available
   function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
 );
@@ -108,7 +109,7 @@ window.plugins.touchid.verifyFingerprintWithCustomPasswordFallbackAndEnterPasswo
 
 You can copy-paste these lines of code for a quick test:
 ```html
-<button onclick="window.plugins.touchid.isAvailable(function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + msg)})">Touch ID available?</button>
+<button onclick="window.plugins.touchid.isAvailable(false, function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + msg)})">Touch ID available?</button>
 <button onclick="window.plugins.touchid.verifyFingerprint('Scan your fingerprint please', function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + JSON.stringify(msg))})">Scan fingerprint</button>
 ```
 
@@ -123,6 +124,7 @@ before accepting valid fingerprints again.
 
 ```js
 window.plugins.touchid.isAvailable(
+    false,
     // success handler; available
     function() {
       window.plugins.touchid.didFingerprintDatabaseChange(
@@ -139,5 +141,34 @@ window.plugins.touchid.isAvailable(
     function(msg) {
       // use a more traditional auth mechanism
     }
+);
+```
+
+## Face ID Support
+Since iOS 11, LocalAuthentication also supports Face ID for biometrics. This is
+a drop-in replacement for Touch ID and any existing apps using Touch ID will
+work identically on devices that use Face ID.
+
+In order to determine the biometry type, an optional argument has been added to
+the `isAvailable` method which will return the type as a string as `'face'` or
+`'touch'` when available. You can use this to display "Face ID" or "Touch ID"
+as appropriate in your app.
+
+```js
+window.plugins.touchid.isAvailable(
+  true,
+  function(type) {alert(type)}, // type returned to success callback: 'face' on iPhone X, 'touch' on other devices
+  function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
+);
+
+window.plugins.touchid.isAvailable(
+  false,
+  function() {alert('available')}, // Nothing returned to success callback
+  function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
+);
+
+window.plugins.touchid.isAvailable(
+  function() {alert('available')}, // Nothing returned to success callback
+  function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
 );
 ```
