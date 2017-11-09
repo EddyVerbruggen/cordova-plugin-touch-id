@@ -109,7 +109,7 @@ window.plugins.touchid.verifyFingerprintWithCustomPasswordFallbackAndEnterPasswo
 
 You can copy-paste these lines of code for a quick test:
 ```html
-<button onclick="window.plugins.touchid.isAvailable(false, function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + msg)})">Touch ID available?</button>
+<button onclick="window.plugins.touchid.isAvailable(function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + msg)})">Touch ID available?</button>
 <button onclick="window.plugins.touchid.verifyFingerprint('Scan your fingerprint please', function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + JSON.stringify(msg))})">Scan fingerprint</button>
 ```
 
@@ -124,7 +124,6 @@ before accepting valid fingerprints again.
 
 ```js
 window.plugins.touchid.isAvailable(
-    false,
     // success handler; available
     function() {
       window.plugins.touchid.didFingerprintDatabaseChange(
