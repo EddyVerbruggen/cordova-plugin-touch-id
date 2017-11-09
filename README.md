@@ -69,8 +69,7 @@ First you'll want to check whether or not the user has a configured fingerprint 
 You can use this to show a 'log in with your fingerprint' button next to a username/password login form.
 ```js
 window.plugins.touchid.isAvailable(
-  false,
-  function() {alert('available!')}, // success handler: TouchID available
+  function(type) {alert(type)}, // type returned to success callback: 'face' on iPhone X, 'touch' on other devices
   function(msg) {alert('not available, message: ' + msg)} // error handler: no TouchID available
 );
 ```
