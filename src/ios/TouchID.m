@@ -194,7 +194,7 @@ NSString *keychainItemServiceName;
   SecAccessControlRef accessControlRef = SecAccessControlCreateWithFlags(
                                                                          kCFAllocatorDefault,
                                                                          kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
-                                                                         kSecAccessControlBiometryAny,
+                                                                         2, // either kSecAccessControlBiometryAny (iOS 11.3+) or kSecAccessControlTouchIDAny (iOS < 11.3),
                                                                          &accessControlError);
   if (accessControlRef == NULL || accessControlError != NULL)
   {
@@ -203,7 +203,7 @@ NSString *keychainItemServiceName;
   }
 
   attributes[(__bridge id)kSecAttrAccessControl] = (__bridge id)accessControlRef;
-  attributes[(__bridge id)kSecUseNoAuthenticationUI] = @YES;
+  attributes[(__bridge id)kSecUseAuthenticationUI] = @YES;
   // The content of the password is not important.
   attributes[(__bridge id)kSecValueData] = [@"dummy content" dataUsingEncoding:NSUTF8StringEncoding];
 

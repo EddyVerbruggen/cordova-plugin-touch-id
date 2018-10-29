@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-touch-id",
-  "version": "3.3.2",
+  "version": "3.4.0",
   "description": "Scan the fingerprint of your user with the TouchID sensor, or the user's Face with Face ID on iPhone X",
   "cordova": {
     "id": "cordova-plugin-touch-id",
