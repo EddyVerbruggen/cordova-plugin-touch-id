@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-touch-id",
+  "name": "@didux-io/cordova-plugin-touch-id",
   "version": "3.4.0",
   "description": "Scan the fingerprint of your user with the TouchID sensor, or the user's Face with Face ID on iPhone X",
   "cordova": {
-    "id": "cordova-plugin-touch-id",
+    "id": "@didux-io/cordova-plugin-touch-id",
     "platforms": [
       "ios"
     ]
