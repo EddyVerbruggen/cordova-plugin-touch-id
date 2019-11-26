@@ -113,6 +113,17 @@ You can copy-paste these lines of code for a quick test:
 <button onclick="window.plugins.touchid.verifyFingerprint('Scan your fingerprint please', function(msg) {alert('ok: ' + msg)}, function(msg) {alert('not ok: ' + JSON.stringify(msg))})">Scan fingerprint</button>
 ```
 
+## "Biometry is locked out" (code: -8)
+
+```js
+window.plugins.touchid.askPassword(
+   'Enter password', // this will become the 'Enter password' label
+   function(msg) {alert('ok: ' + msg)}, // success handler: fingerprint reactivated
+   function(msg) {alert('not ok: ' + JSON.stringify(msg))} // error reason as string
+);
+```
+
+
 ## Security++
 Since iOS9 it's possible to check whether or not the list of enrolled fingerprints changed since
 the last time you checked it. It's recommended you add this check so you can counter hacker attacks
