@@ -211,4 +211,26 @@ NSString *keychainItemServiceName;
   return YES;
 }
 
+
+- (void) askPassword:(CDVInvokedUrlCommand*)command {
+    LAContext *laContext = [[LAContext alloc] init];
+    __block  NSString *message;
+    NSString *reasonMessage = [command.arguments objectAtIndex:0]; // @"Unlock access to locked feature"
+    
+    [laContext evaluatePolicy:LAPolicyDeviceOwnerAuthentication localizedReason:reasonMessage reply:^(BOOL success, NSError *authenticationError) {
+        if (success) {
+            message = @"success";
+            
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message]
+            callbackId:command.callbackId];
+        }
+        else {
+            message = [NSString stringWithFormat:@"%@", authenticationError.localizedDescription];
+            
+            [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[authenticationError localizedDescription]]
+            callbackId:command.callbackId];
+        }
+    }];
+}
+
 @end
